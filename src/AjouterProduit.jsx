@@ -34,8 +34,8 @@ export default function AjouterProduit({ onProductAdded }) {
         }
 
         try {
-            // Using '/api' which is proxied via vite.config.js
-            const response = await axios.post('/api/products', formData, {
+            // Using Vercel API URL
+            const response = await axios.post('https://v1-ecom-ww.vercel.app/api/products', formData, {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'multipart/form-data'
@@ -75,7 +75,7 @@ export default function AjouterProduit({ onProductAdded }) {
                     setMessage(`Erreur serveur (${error.response.status}): ${errorDetail}`);
                 }
             } else if (error.request) {
-                setMessage('Erreur réseau : Impossible de contacter le serveur. Vérifiez que Laravel est lancé.');
+                setMessage('Erreur réseau : Impossible de contacter le serveur. Vérifiez que l\'API est accessible.');
             } else {
                 setMessage(`Erreur : ${error.message}`);
             }

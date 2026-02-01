@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 // API URL (Relative to proxy)
-const API_URL = '/api';
+const API_URL = 'https://v1-ecom-ww.vercel.app/api';
 
 export default function ApiClient({ refreshKey }) {
     const [searchQuery, setSearchQuery] = useState('');
@@ -34,7 +34,7 @@ export default function ApiClient({ refreshKey }) {
                 if (err.response) {
                     msg += ` (Status: ${err.response.status})`;
                 } else if (err.request) {
-                    msg += " (Pas de réponse du serveur. Vérifiez que Laravel est lancé sur http://localhost:8000)";
+                    msg += " (Pas de réponse du serveur. Vérifiez que l'API est accessible.)";
                 } else {
                     msg += ` (${err.message})`;
                 }
